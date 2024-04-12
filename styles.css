@@ -1,5 +1,6 @@
 #window {
-    background-color: lightgreen;
+    background-color: white;
     width: 50vw;    
     aspect-ratio: 1/1;
+    border-left: solid 5px black;
 }

@@ -4,13 +4,16 @@ const ctx = wdow.getContext("2d")
 wdow.width = wdow.offsetWidth; //500
 wdow.height = wdow.offsetHeight; //400
 
-circle_radius = wdow.width/46;
+circle_radius = wdow.width/60;
 circle_spacing = wdow.width/20;
 
 var rows = [];
 var cols =[];
 
 function drawCircle(x, y, fill = false){
+    ctx.strokeStyle = 'black';
+    ctx.fillStyle = 'grey';
+
     ctx.beginPath()
 
     ctx.arc(x, y, circle_radius, 0, 2 * Math.PI);
