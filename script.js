@@ -1,18 +1,16 @@
 const wdow = document.getElementById('window')
 const ctx = wdow.getContext("2d")
 
-wdow.width = 500;
-wdow.height = 400;
+wdow.width = wdow.offsetWidth; //500
+wdow.height = wdow.offsetHeight; //400
 
-console.log(wdow.width)
+circle_radius = wdow.width/40;
+circle_spacing = wdow.width/20;
 
-circle_radius = 5;
+var rows = [];
+var cols =[];
 
-circle_spacing = 20;
-
-var circles = [];
-
-function drawCircle(x, y) {
+function drawCircle(x, y, fill = false){
     ctx.beginPath()
 
     ctx.arc(x, y, circle_radius, 0, 2 * Math.PI);
@@ -20,10 +18,23 @@ function drawCircle(x, y) {
     ctx.closePath()
 
     ctx.stroke();
+    
+    if(fill)
+        ctx.fill();
 }
 
-for (var y = circle_spacing; y < wdow.height; y += circle_spacing) {
-    for (var x = 3*circle_spacing/5; x < wdow.width-circle_spacing/2; x += circle_radius+circle_spacing) {
+for (var y = circle_spacing; y < wdow.height; y += circle_radius+circle_spacing) {
+    rows.push(y);
+    for (var x = circle_spacing; x < wdow.width-circle_spacing/2; x += circle_radius+circle_spacing) {
         drawCircle(x, y)
+        cols.push(x);
     }
 }
+
+var cPos = [0, 0];
+
+wdow.addEventListener('mousedown', (event) => {
+    x = rows[Math.floor((event.pageX+0.5)/(circle_radius+circle_spacing))];
+    y = cols[Math.floor((event.pageY+0.5)/(circle_radius+circle_spacing))];
+    drawCircle(x, y, true);
+})
