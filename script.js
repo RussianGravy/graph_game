@@ -28,7 +28,7 @@ function drawCircle(x, y, fill = false, fillColor = 'grey', stroke = 'grey'){
 }
 
 function drawEdge(x1, y1, x2, y2){
-    ctx.lineWidth = 7.5;
+    ctx.lineWidth = 4;
 
     ctx.beginPath()
 
