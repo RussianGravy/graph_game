@@ -11,6 +11,10 @@ body {
     aspect-ratio: 1/1;
 }
 
+#instructions {
+    line-height: 1.8;    
+}
+
 @media (orientation : portrait) {
     #window {
         width: 60vw;    
