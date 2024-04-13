@@ -1,3 +1,10 @@
+body {
+    display: flex;
+}
+#game_area {
+    margin-top: 0px;
+    margin-left: 20px;
+}
 #window {
     background-color: white;
     width: 50vw;    
