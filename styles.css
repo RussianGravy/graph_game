@@ -6,8 +6,19 @@ body {
     margin-left: 20px;
 }
 #window {
-    background-color: white;
-    width: 50vw;    
-    aspect-ratio: 1/1;
+    background-color: white;   
     border-left: solid 5px black;
+    aspect-ratio: 1/1;
 }
+
+@media (orientation : portrait) {
+    #window {
+        width: 60vw;    
+    }
+} 
+
+@media (orientation : landscape) {
+    #window {
+        height: 86vh;    
+    }
+} 
