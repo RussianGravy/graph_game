@@ -43,13 +43,26 @@ function drawCircle(x, y, fill = false, fillColor = 'grey', stroke = 'grey'){
     ctx.lineWidth = temp3;
 }
 
+function drawVert(){
+
+}
+
 function drawEdge(x1, y1, x2, y2){
     var temp1 = ctx.strokeStyle;
     var temp2 = ctx.fillStyle;
+    var temp3 = ctx.lineWidth;
 
     ctx.lineWidth = 4;
+    ctx.strokeStyle = 'black';
 
-    ctx.beginPath()
+    var rat;
+
+    var offset = [
+        Math.abs(0),
+        Math.abs(0)
+    ]; 
+
+    ctx.beginPath();
 
     ctx.moveTo(x1, y1);
 
@@ -59,25 +72,29 @@ function drawEdge(x1, y1, x2, y2){
 
     ctx.stroke();
 
-    drawCircle(x1, y1, true, 'red');
-    ctx.strokeStyle = 'white';
-    ctx.strokeText(String(verts.length-2),x1-4,y1+4);
-    ctx.strokeStyle = temp1;
-    drawCircle(x2, y2, true, 'red');
-    ctx.strokeStyle = 'white';
-    ctx.strokeText(String(verts.length-1),x2-4,y2+4);
-
     ctx.strokeStyle = temp1;
     ctx.fillStyle = temp2;
+    ctx.lineWidth = temp3;
 }
 
 function considerVert(x, y){
     //check if there is a vertex at this position. 
-    //if not, add this vertex and draw it.\
+    //if not, add this vertex and draw it.
     //only call on this method on second click.
+    var key = Math.pow(2, x)*Math.pow(3, -1*y);
+    if(!verts.has(key)){
+        verts.set(key, verts.size+1);
+        drawCircle(x, y, true, 'red');
+        ctx.strokeStyle = 'white';
+        ctx.strokeText(verts.size,x-4,y+4);
+        return true;
+    }
+    else 
+        return false
 }
 
 var numClicks = 0;
+var lPos = [0,0];
 var cPos = [0, 0];
 var verts = new Map();
 var edges = new Map();
@@ -86,13 +103,14 @@ wdow.addEventListener('mousedown', (event) => {
     numClicks++;
     x = rows[Math.floor((event.pageX-wdow.offsetLeft+0.5)/(circle_radius+circle_spacing))];
     y = cols[Math.floor((event.pageY-wdow.offsetTop+0.5)/(circle_radius+circle_spacing))];
-    drawCircle(x, y, true, 'grey', 'black');
-
-    // cPos = [x, y];
-    // verts.push(cPos);
-    // if(verts.length%2==0){
-    //     var start = verts[verts.length-2];
-    //     var end = verts[verts.length-1];
-    //     drawEdge(start[0], start[1], end[0], end[1]);
-    // }
+    if(!verts.has(Math.pow(2, x)*Math.pow(3, -1*y))){
+        drawCircle(x, y, true, 'grey', 'black');
+    }
+    if(numClicks%2==0){
+        drawEdge(lPos[0], lPos[1], x, y);
+        considerVert(lPos[0], lPos[1]);
+        considerVert(x, y);
+    }
+    lPos = [x, y];
+    //drawCircle(x, y, true, 'grey', 'black');
 })
