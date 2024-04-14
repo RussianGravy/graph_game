@@ -5,10 +5,16 @@ body {
     margin-top: 0px;
     margin-left: 20px;
 }
-#window {
-    background-color: white;   
+.window { 
     border-left: solid 5px black;
     aspect-ratio: 1/1;
+    position: relative;
+}
+#layer_top {
+    background-color: transparent;
+}
+#layer_bottom{
+    position: absolute;
 }
 
 #instructions {
@@ -16,13 +22,13 @@ body {
 }
 
 @media (orientation : portrait) {
-    #window {
+    .window {
         width: 60vw;    
     }
 } 
 
 @media (orientation : landscape) {
-    #window {
+    .window {
         height: 86vh;    
     }
 } 
