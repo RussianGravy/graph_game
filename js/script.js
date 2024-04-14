@@ -77,11 +77,12 @@ function drawEdge(x1, y1, x2, y2){
     ctx.lineWidth = temp3;
 }
 
+function makeKey(x, y){
+    return Math.pow(2, x)*Math.pow(3, -1*y);
+}
+
 function considerVert(x, y){
-    //check if there is a vertex at this position. 
-    //if not, add this vertex and draw it.
-    //only call on this method on second click.
-    var key = Math.pow(2, x)*Math.pow(3, -1*y);
+    var key = makeKey(x, y);
     if(!verts.has(key)){
         verts.set(key, verts.size+1);
         drawCircle(x, y, true, 'red');
@@ -103,7 +104,7 @@ wdow.addEventListener('mousedown', (event) => {
     numClicks++;
     x = rows[Math.floor((event.pageX-wdow.offsetLeft+0.5)/(circle_radius+circle_spacing))];
     y = cols[Math.floor((event.pageY-wdow.offsetTop+0.5)/(circle_radius+circle_spacing))];
-    if(!verts.has(Math.pow(2, x)*Math.pow(3, -1*y))){
+    if(!verts.has( makeKey(x, y) )){
         drawCircle(x, y, true, 'grey', 'black');
     }
     if(numClicks%2==0){
@@ -112,5 +113,4 @@ wdow.addEventListener('mousedown', (event) => {
         considerVert(x, y);
     }
     lPos = [x, y];
-    //drawCircle(x, y, true, 'grey', 'black');
 })
