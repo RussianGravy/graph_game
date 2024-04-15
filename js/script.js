@@ -1,3 +1,5 @@
+const alphabet = 'ABCDEFGHIJKLMONPQRSTUVWXYZ';
+
 const topLay = document.getElementById('layer_top')
 const ctxTop = topLay.getContext("2d")
 const botLay = document.getElementById('layer_bottom')
@@ -56,13 +58,6 @@ function drawEdge(x1, y1, x2, y2){
     ctxBot.lineWidth = 4;
     ctxBot.strokeStyle = 'black';
 
-    var rat;
-
-    var offset = [
-        Math.abs(0),
-        Math.abs(0)
-    ]; 
-
     ctxBot.beginPath();
 
     ctxBot.moveTo(x1, y1);
@@ -72,16 +67,30 @@ function drawEdge(x1, y1, x2, y2){
     ctxBot.closePath();
 
     ctxBot.stroke();
+
+    var key = makeKey(x1, y1, x2, y2);
+    if(!edges.has( key ) && (x1!=x2 && y1!=y2)){
+        edges.set(key, [alphabet.substring(edges.size, edges.size+1), verts.get( makeKey(x1, y1) ), verts.get( makeKey(x2, y2) )]);
+        console.log(edges.get(key));
+    }
 }
 
-function makeKey(x, y){
-    return Math.pow(2, x)*Math.pow(3, -1*y);
+function makeKey(x, y, x2 = null, y2 = null){
+    var key = Math.pow(2, x)*Math.pow(3, -1*y);
+    if(x2 != null && y2 != null){
+        key = Math.pow(2, x)*Math.pow(3, -1*y)+Math.pow(2, x2)*Math.pow(3, -1*y2);
+    }
+    return key;
 }
+
+// function makeKey(x1, y1, x2, y2){
+//     return Math.pow(2, x1)*Math.pow(3, -1*y1)+Math.pow(2, x2)*Math.pow(3, -1*y2);
+// }
 
 function considerVert(x, y){
     var key = makeKey(x, y);
     if(!verts.has(key)){
-        verts.set(key, verts.size+1);
+        verts.set(key, [verts.size+1, x, y]);
         drawCircle(x, y, true, 'red');
         ctxTop.strokeStyle = 'white';
         ctxTop.strokeText(verts.size,x-4,y+4);
@@ -105,9 +114,9 @@ topLay.addEventListener('mousedown', (event) => {
         drawCircle(x, y, true, 'grey', 'black');
     }
     if(numClicks%2==0){
-        drawEdge(lPos[0], lPos[1], x, y);
         considerVert(lPos[0], lPos[1]);
         considerVert(x, y);
+        drawEdge(lPos[0], lPos[1], x, y);
     }
     lPos = [x, y];
 })

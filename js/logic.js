@@ -6,23 +6,53 @@ function deleteButtons(){
     }
 }
 
-function start(){
-    deleteButtons();
-    printText(intro); 
-}
-
-async function about(){
+async function start(){
     var buttons = document.getElementsByTagName('button');
-    var temp = [];
     for(var i = 0; i < buttons.length; i++){
         buttons[i].style.opacity = 0;
         buttons[i].style.opacity = 0;
         buttons[i].style.position = 'absolute';
     }
-    printText(
-        'Dijstra is a math based puzzle game. Solve the prompts and earn points!'
+    await printText(
+        'Game coming soon...'
+    ); 
+    await sleepNow(1000);
+    instructions.innerText = '';
+    for(var i = 0; i < buttons.length; i++){
+        buttons[i].style.opacity = 1;
+        buttons[i].style.opacity = 1;
+        buttons[i].style.position = 'static';
+    }
+}
+
+async function howToPlay(){
+    var buttons = document.getElementsByTagName('button');
+    for(var i = 0; i < buttons.length; i++){
+        buttons[i].style.opacity = 0;
+        buttons[i].style.opacity = 0;
+        buttons[i].style.position = 'absolute';
+    }
+    await printText(controls); 
+    await sleepNow(3000);
+    instructions.innerText = '';
+    for(var i = 0; i < buttons.length; i++){
+        buttons[i].style.opacity = 1;
+        buttons[i].style.opacity = 1;
+        buttons[i].style.position = 'static';
+    }
+}
+
+async function about(){
+    var buttons = document.getElementsByTagName('button');
+    for(var i = 0; i < buttons.length; i++){
+        buttons[i].style.opacity = 0;
+        buttons[i].style.opacity = 0;
+        buttons[i].style.position = 'absolute';
+    }
+    await printText(
+        'Just something I imagined while dozing during Discrete Math.'
     );
-    await sleepNow(4000);
+    await sleepNow(1250);
     instructions.innerText = '';
     for(var i = 0; i < buttons.length; i++){
         buttons[i].style.opacity = 1;
