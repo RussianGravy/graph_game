@@ -46,6 +46,21 @@ async function about(){
     }
 }
 
+async function level_1() {
+    await printText(
+        'Create a graph with 3 Verteces and 2 edges'
+    );
+    var gotVerts = verts.size == 3;
+    var gotEdges = edges.size == 2;
+    while(!gotVerts && !gotEdges){
+        var gotVerts = verts.size == 3;
+        var gotEdges = edges.size == 2;
+        await sleepNow(250);
+    }
+    await printText("GOOD JOB!! All for now. Bye.");
+    await sleepNow(1000);
+}
+
 async function start(){
     var buttons = document.getElementsByTagName('button');
     for(var i = 0; i < buttons.length; i++){
@@ -54,9 +69,10 @@ async function start(){
         buttons[i].style.position = 'absolute';
         buttons[i].style.pointerEvents = 'none';
     }
+    await level_1();
     await printText(
-        'Game coming soon...'
-    ); 
+        'More coming soon...'
+    );
     await sleepNow(1000);
     instructions.innerText = '';
     for(var i = 0; i < buttons.length; i++){
