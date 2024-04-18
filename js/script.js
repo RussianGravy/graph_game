@@ -69,16 +69,28 @@ function drawEdge(x1, y1, x2, y2){
     ctxBot.stroke();
 
     var key = makeKey(x1, y1, x2, y2);
-    if(!edges.has( key ) && (x1!=x2 && y1!=y2)){
-        edges.set(key, [alphabet.substring(edges.size, edges.size+1), verts.get( makeKey(x1, y1) ), verts.get( makeKey(x2, y2) )]);
+    if(!edges.has( key )){
+        var letter = alphabet.substring(edges.size, edges.size+1);
+        edges.set(key, [letter, verts.get( makeKey(x1, y1) ), verts.get( makeKey(x2, y2) )]);
+        // var rat;
+        // if((x1-x2)==0 || (y1-y2)==0){  
+        //     rat = 1;}
+        // else {
+        //     rat = (y1-y2)/(x1-x2);}
+        // var dist = Math.abs(x2-x1)/2;
+        // var letterPos = [x1+dist, y1+dist*rat];
+        // ctxBot.strokeText(letter, letterPos[0], letterPos[1]);
+        // console.log(letter, letterPos[0], letterPos[1]);2
         console.log(edges.get(key));
+        ctxBot.lineWidth = 4; //reset
+        ctxBot.strokeStyle = 'black'; //reset
     }
 }
 
 function makeKey(x, y, x2 = null, y2 = null){
     var key = Math.pow(2, x)*Math.pow(3, -1*y);
     if(x2 != null && y2 != null){
-        key = Math.pow(2, x)*Math.pow(3, -1*y)+Math.pow(2, x2)*Math.pow(3, -1*y2);
+        key = Math.pow(2, x)*Math.pow(3, -1*y)*Math.pow(2, x2)*Math.pow(3, -1*y2);
     }
     return key;
 }

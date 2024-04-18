@@ -6,25 +6,6 @@ function deleteButtons(){
     }
 }
 
-async function start(){
-    var buttons = document.getElementsByTagName('button');
-    for(var i = 0; i < buttons.length; i++){
-        buttons[i].style.opacity = 0;
-        buttons[i].style.opacity = 0;
-        buttons[i].style.position = 'absolute';
-    }
-    await printText(
-        'Game coming soon...'
-    ); 
-    await sleepNow(1000);
-    instructions.innerText = '';
-    for(var i = 0; i < buttons.length; i++){
-        buttons[i].style.opacity = 1;
-        buttons[i].style.opacity = 1;
-        buttons[i].style.position = 'static';
-    }
-}
-
 async function howToPlay(){
     var buttons = document.getElementsByTagName('button');
     for(var i = 0; i < buttons.length; i++){
@@ -53,6 +34,25 @@ async function about(){
         'Just something I imagined while dozing during Discrete Math.'
     );
     await sleepNow(1250);
+    instructions.innerText = '';
+    for(var i = 0; i < buttons.length; i++){
+        buttons[i].style.opacity = 1;
+        buttons[i].style.opacity = 1;
+        buttons[i].style.position = 'static';
+    }
+}
+
+async function start(){
+    var buttons = document.getElementsByTagName('button');
+    for(var i = 0; i < buttons.length; i++){
+        buttons[i].style.opacity = 0;
+        buttons[i].style.opacity = 0;
+        buttons[i].style.position = 'absolute';
+    }
+    await printText(
+        'Game coming soon...'
+    ); 
+    await sleepNow(1000);
     instructions.innerText = '';
     for(var i = 0; i < buttons.length; i++){
         buttons[i].style.opacity = 1;

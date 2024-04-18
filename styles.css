@@ -19,12 +19,26 @@ body {
 
 #instructions {
     line-height: 1.8;    
-    width: 40vw;
+    width: 55vw;
 }
 
 @media (orientation : portrait) {
+    body {
+        flex-direction: column;
+    }
+    h1 {
+        font-size: 8vw;
+    }
+    button {
+        font-size: 4vw;
+        margin: 1vw;
+    }
+    #instructions {
+        font-size: 4vw;
+        width: 80vw;
+    }
     .window {
-        width: 60vw;    
+        width: 90vw;    
     }
 } 
 
