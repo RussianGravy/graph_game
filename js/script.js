@@ -88,9 +88,9 @@ function drawEdge(x1, y1, x2, y2){
 }
 
 function makeKey(x, y, x2 = null, y2 = null){
-    var key = Math.pow(2, x)*Math.pow(3, -1*y);
+    var key = Math.pow(2, x)*Math.pow(3,y/15);
     if(x2 != null && y2 != null){
-        key = Math.pow(2, x)*Math.pow(3, -1*y)*Math.pow(2, x2)*Math.pow(3, -1*y2);
+        key = Math.pow(2, x/15)-Math.pow(3,y/15) - Math.pow(2, x2/15)-Math.pow(3,y2/15);
     }
     return key;
 }
