@@ -1,6 +1,6 @@
 var instructions = document.getElementById('instructions');
 
-var controls = 'Click a circle to select. Click it again to create a Vertex, ' + 
+var controls = 'Click a circle to select it. Click it again to create a Vertex, ' + 
                 'or click on a different circle to create a Link. \n' + 
                 "If the circle you selected already contains a Vertex,  a new Vertex won't be created but you may link existing Verteces.";
 

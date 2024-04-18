@@ -12,6 +12,7 @@ async function howToPlay(){
         buttons[i].style.opacity = 0;
         buttons[i].style.opacity = 0;
         buttons[i].style.position = 'absolute';
+        buttons[i].style.pointerEvents = 'none';
     }
     await printText(controls); 
     await sleepNow(3000);
@@ -20,6 +21,7 @@ async function howToPlay(){
         buttons[i].style.opacity = 1;
         buttons[i].style.opacity = 1;
         buttons[i].style.position = 'static';
+        buttons[i].style.pointerEvents = 'auto';
     }
 }
 
@@ -29,6 +31,7 @@ async function about(){
         buttons[i].style.opacity = 0;
         buttons[i].style.opacity = 0;
         buttons[i].style.position = 'absolute';
+        buttons[i].style.pointerEvents = 'none';
     }
     await printText(
         'Just something I imagined while dozing during Discrete Math.'
@@ -39,6 +42,7 @@ async function about(){
         buttons[i].style.opacity = 1;
         buttons[i].style.opacity = 1;
         buttons[i].style.position = 'static';
+        buttons[i].style.pointerEvents = 'auto';
     }
 }
 
@@ -48,6 +52,7 @@ async function start(){
         buttons[i].style.opacity = 0;
         buttons[i].style.opacity = 0;
         buttons[i].style.position = 'absolute';
+        buttons[i].style.pointerEvents = 'none';
     }
     await printText(
         'Game coming soon...'
@@ -58,5 +63,6 @@ async function start(){
         buttons[i].style.opacity = 1;
         buttons[i].style.opacity = 1;
         buttons[i].style.position = 'static';
+        buttons[i].style.pointerEvents = 'auto';
     }
 }

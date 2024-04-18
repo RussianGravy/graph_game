@@ -101,6 +101,7 @@ function makeKey(x, y, x2 = null, y2 = null){
 
 function considerVert(x, y){
     var key = makeKey(x, y);
+        console.log(x +', ' + y + ' => ' + key);
     if(!verts.has(key)){
         verts.set(key, [verts.size+1, x, y]);
         drawCircle(x, y, true, 'red');
