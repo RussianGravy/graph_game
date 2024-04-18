@@ -48,7 +48,7 @@ async function about(){
 
 async function level_1() {
     await printText(
-        'Create a graph with 3 Verteces and 2 edges'
+        'Create a graph with \n - 3 Verteces \n - 2 edges.'
     );
     var gotVerts = verts.size == 3;
     var gotEdges = edges.size == 2;
