@@ -19,7 +19,7 @@ body {
 
 #instructions {
     line-height: 1.8;    
-    width: 52vw;
+    width: 45vw;
 }
 
 @media (orientation : portrait) {
